@@ -1,1 +1,5 @@
 rules
+----notes for kuuks
+--setup the db, write models for the db. table structure and schema
+--then import data to table.
+--address with 2 or more business attributes
