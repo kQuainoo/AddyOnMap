@@ -17,3 +17,6 @@ from .models import UserRadius
 
 
 admin.site.register(UserRadius)
+
+# superuser username: kuuku pswd: quainoo1!
+# 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
