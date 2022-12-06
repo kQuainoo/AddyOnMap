@@ -4,11 +4,13 @@ from django.db import models
 # import datetime
 # from django.utils import timezone
 
-# table UserRadius with 2 fields.
+# table UserRadius with a few fields.
 
 class UserRadius(models.Model):
 
-    uRadius_text = models.CharField(max_length= 200)
+    uRadius_text = models.BigIntegerField
+    city = models.CharField(max_length = 200)
+    province = models.CharField(max_length = 100)
     pub_date = models.DateTimeField('This is the date of request')
 
     # @admin.display(
