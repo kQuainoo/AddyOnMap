@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os.path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bufferRad.apps.BufferradConfig',
+    'bufferRad.apps.bufferRadConfig',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
-
+    
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -67,6 +68,16 @@ TEMPLATES = [
         },
     },
 ]
+    
+# tupple for setting template directory
+# TEMPLATE_DIR = (
+#     '/home/Documents/Projects/AddyOnMap/mysite/bufferRad/templates',
+# )
+# dynamic way of setting template directory
+
+# TEMPLATE_DIR = (
+#     os.path.join(os.path.dirname(__file__),'templates').replace('\\','/'),
+# )
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -126,3 +137,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+APPEND_SLASH = True
+

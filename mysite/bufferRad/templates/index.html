@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<!-- program to create and show buffer from specified points based on user input, base layer toronto, assumption delivery company analyzing service area network-->
+    <head>
+        <title>BufferRad application</title> 
+        
+        <!--link to leaflet css file, that defines layout of webpage-->   
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
+        <!--link to the leaflet js API-->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+        <style type = "text/css">
+            #cptoDb {
+                position: absolute;
+                top:20px;
+                right:20px;
+                padding: 10px;
+                z-index: 400;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div id = "mapid">
+            <!--define style for map container, without which map is not displayed-->
+            <style type="text/css">
+                html { height: 100% }
+                body { height:100%; margin:0; padding:0 }
+                #mapid {width:100%; height:100%}
+            </style>
+
+        </div>
+        <button id = "cptoDb">Text on Button</button>
+        <p>{{ UserRadius.uRadius_text }}</p>
+
+
+        <script>
+            //map instance is created. default zoom (13)
+            var mymap = L.map('mapid').setView([43.652526, -79.382674], 12);
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', { 
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', 
+                maxZoom: 18, 
+                id: 'mapbox/streets-v11', 
+                tileSize: 512, 
+                zoomOffset: -1, 
+                accessToken: 'pk.eyJ1Ijoia3F1YWlub28iLCJhIjoiY2tmb3ZsMXFsMDFsdzJxb3hsenhiam0wciJ9.Hycza97C9ZS4KEzKdP-ofA'
+            }).addTo(mymap);
+
+            var cptoDb = L.marker([43.652526, -79.382674]).addTo(mymap);
+
+            function onClick(cptoDb){
+                // run model function to 'insert row'
+                alert(this.getLatLng())     
+                //TODO this doesnt work
+
+            };
+            mymap.on('click',onClick);
+
+            myControl = L.control({position:'bottomright'});
+            myControl.onAdd = function(mymap) {
+                this._div = L.DomUtil.create('div','myControl');
+                this._div.innerHTML = '<input id = radinput type="integer" placeholder="2"/>'
+
+                return this._div;
+            }
+            myControl.addTo(mymap);
+
+            // in the index html file have function calling  the action ( through form etc)
+            // in view.py define the function doing action
+            // var popup = L.popup({
+            //     closeButton: false,
+            //     autoClose: false
+            // })
+            // .setLatLng([43.652526, -79.382674])
+            // .setContent('<p>This is the text box</p>')
+            // .openOn(mymap)
+
+            // function init(){
+
+
+            // }
+
+            function adtoDB(e){
+                // event listener function
+                var tgPoint = L.marker([43.652526, -79.382674]).addTo(mymap);
+                var tgPoint = e.target;
+
+                tgPoint.setStyle({
+                    fillOpacity:0.7,
+                    color: 'red',
+                });
+                tgPoint.bringToFront();
+
+            };
+
+            function resetaddtoDB(e){
+
+                geojson.resetStyle(e.target);
+            };
+            map.on("load",function(e) {
+                init()
+            });
+        </script>
+
+    </body>
+
+</html>

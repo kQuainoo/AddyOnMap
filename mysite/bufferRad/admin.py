@@ -3,6 +3,7 @@ from django.contrib import admin
 # Register your models here.
 
 from .models import UserRadius
+from .models import addy
 
 
 # class UserRadiusAdmin(admin.ModelAdmin):
@@ -17,6 +18,7 @@ from .models import UserRadius
 
 
 admin.site.register(UserRadius)
+admin.site.register(addy)
 
 # superuser username: kuuku pswd: quainoo1!
 # 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
