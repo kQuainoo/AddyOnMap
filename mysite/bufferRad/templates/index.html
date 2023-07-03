@@ -31,8 +31,9 @@
             </style>
 
         </div>
-        <button id = "cptoDb">Text on Button</button>
-        <p>{{ UserRadius.uRadius_text }}</p>
+
+        <button id = "cptoDb_trigger">Text on Button</button>
+        <p>{{ UserRadius.uRadius_text }}</p> <!--django shortcut-->
 
 
         <script>
@@ -50,13 +51,7 @@
 
             var cptoDb = L.marker([43.652526, -79.382674]).addTo(mymap);
 
-            function onClick(cptoDb){
-                // run model function to 'insert row'
-                alert(this.getLatLng())     
-                //TODO this doesnt work
 
-            };
-            mymap.on('click',onClick);
 
             myControl = L.control({position:'bottomright'});
             myControl.onAdd = function(mymap) {
@@ -67,7 +62,7 @@
             }
             myControl.addTo(mymap);
 
-            // in the index html file have function calling  the action ( through form etc)
+            // in the index html file have function calling the action ( through form etc)
             // in view.py define the function doing action
             // var popup = L.popup({
             //     closeButton: false,
@@ -99,6 +94,17 @@
 
                 geojson.resetStyle(e.target);
             };
+
+            function onClick(cptoDb){
+                // run model function to 'insert row'
+                alert(this.getLatLng())     
+                //TODO this doesnt work
+
+            };
+            mymap.on('click',onClick);
+
+
+
             map.on("load",function(e) {
                 init()
             });
