@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib import admin  
-from django.db import models
+
 # import datetime
 # from django.utils import timezone
 
@@ -20,7 +20,7 @@ class addy(models.Model):
 class UserRadius(models.Model):
 
     uRadius_text = models.BigIntegerField(default=2)
-    uinput_rad =models.BooleanField()
+    uinput_rad = models.BooleanField()
     uRadius_text = models.ForeignKey(addy,on_delete=models.CASCADE)
     # uRadius_date = models.DateField(default=date.today)
 

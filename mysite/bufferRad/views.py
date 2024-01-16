@@ -6,30 +6,29 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.template.loader import get_template
 from django.template.context import ContextDict
-from django.views import generic
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, FormView
 
-
+from django import forms
 
 from .models import UserRadius
 
 
-
-# def index(request):
-
-#     template = loader.get_template('bufferRad/index.html')
-#     return render(request,'bufferRad/index.html')
-
-# def post(self,request):
-
-#     return 
-
-class IndexView(generic.TemplateView):
+class IndexView(FormView):
     template_name = 'index.html'
-    # context_object_name = 'somethingoeshere'
+    form_class = 'AddyInputForm'
+    success_url = 'bufferRad/index.html'
 
-    # def get_queryset(self):
-    #     return UserRadius.objects.count
+    def get_context_data(self, form) -> dict[str,var]:
+        context = 'dosomething'
+        return super().get_context_data(form)
+    
+
+    def form_valid(self, form) -> HttpResponse:
+
+        return super(IndexView).form_valid(form)
+
+
+
 
 class DetailView(generic.DetailView):
     model = UserRadius
