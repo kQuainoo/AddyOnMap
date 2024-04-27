@@ -1,5 +1,5 @@
 from django.urls import path
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,FormView
 
 
 from . import views
@@ -9,7 +9,7 @@ from . import views
 app_name = 'bufferRad'
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name = 'index.html')),
+    path('', FormView.as_view(template_name = 'index.html')),
     path('<int:pk>/',views.TemplateView.as_view(template_name ='index.html')),
     
 ]

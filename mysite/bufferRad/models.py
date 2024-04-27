@@ -4,8 +4,8 @@ from django.contrib import admin
 # import datetime
 # from django.utils import timezone
 
-# table UserRadius with a few fields.
 # TODO insert data into addy table from django admin site
+# index formview template
 
 class addy(models.Model):
     addy_text = models.CharField('Place of Interest',max_length=200)

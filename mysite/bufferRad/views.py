@@ -29,7 +29,6 @@ class IndexView(FormView):
 
 
 
-
 class DetailView(generic.DetailView):
     model = UserRadius
     template_name = 'bufferRad/index.html'
